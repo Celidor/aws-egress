@@ -47,5 +47,5 @@ variable "elastic_ips" {
 }
 
 variable "log_bucket" {
-  description = "S3 log bucket"
+  description = "Session Manager log bucket"
 }

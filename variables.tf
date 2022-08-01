@@ -74,6 +74,6 @@ variable "compute_az2_ip" {
 }
 
 variable "log_bucket" {
-  description = "S3 log bucket"
-  default     = "celidor-logs"
+  description = "Session Manager log bucket"
+  default     = "celidor-sessionmanager"
 }
