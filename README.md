@@ -34,6 +34,10 @@ terraform apply
 
 <img src="images/session.png" width="200">
 
-## changing between Discriminat and AWS NAT Gateways
-* change the variable `discriminat` from `true` to `false` or override using `terraform.tfvars`
+## changing between AWS NAT Gateways and DiscrimiNAT
+* initially infrastructure will be deployed with NAT Gateways:
+
+![](images/nat-gateways.png "AWS")
+
+* to deploy DiscmiNATs, change variable `discriminat` from `false` to `true` or override using `terraform.tfvars`
 * apply Terraform
