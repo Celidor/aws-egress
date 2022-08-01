@@ -41,7 +41,7 @@ module "discriminat" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.project}-${local.env}"
+      Name = "${var.project}-${local.env}-discrimiNAT"
     },
   )
 }
