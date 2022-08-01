@@ -23,7 +23,7 @@ locals {
   ]
   fqdns_application = [
     "ubuntu.com",
-    "isc2.org"
+    "centos.org"
   ]
   discriminat_repos       = format("discriminat:ssh:%s", join(",", local.fqdns_repos))
   discriminat_aws         = format("discriminat:tls:%s", join(",", local.fqdns_aws))
