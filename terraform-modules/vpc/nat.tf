@@ -1,11 +1,25 @@
 resource "aws_eip" "eip_az1" {
   count = var.discriminat ? 0 : 1
   vpc   = true
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.project}-${local.env}-nat-az1"
+    },
+  )
 }
 
 resource "aws_eip" "eip_az2" {
   count = var.discriminat ? 0 : 1
   vpc   = true
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.project}-${local.env}-nat-az2"
+    },
+  )
 }
 
 resource "aws_eip" "discriminat_az1" {
