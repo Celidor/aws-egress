@@ -37,11 +37,12 @@ module "discriminat" {
   source         = "ChaserSystems/discriminat-eni/aws"
   version        = "2.4.0"
   public_subnets = [module.vpc.subnet_dmz_az1_id, module.vpc.subnet_dmz_az2_id]
-
+/*
   tags = merge(
     var.tags,
     {
       Name = "${var.project}-${local.env}-discrimiNAT"
     },
   )
+*/
 }
