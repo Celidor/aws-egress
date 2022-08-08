@@ -30,6 +30,8 @@ module "ec2" {
   compute_az2_ip     = var.compute_az2_ip
   elastic_ips        = [module.vpc.eip_az1_ip, module.vpc.eip_az2_ip]
   log_bucket         = var.log_bucket
+    
+  depends_on = [time_sleep.wait_for_firewall_to_bootstrap]
 }
 
 module "discriminat" {
@@ -45,4 +47,10 @@ module "discriminat" {
     },
   )
 */
+}
+    
+resource "time_sleep" "wait_for_firewall_to_bootstrap" {
+  depends_on = [module.vpc, module.discriminat]
+
+  create_duration = "1m"
 }
