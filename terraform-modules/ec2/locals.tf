@@ -19,6 +19,7 @@ locals {
   ]
   fqdns_logging = [
     "${local.bucket_name}.s3.${var.region}.amazonaws.com",
+    "${local.bucket_name}.s3.amazonaws.com",
     "logs.${var.region}.amazonaws.com"
   ]
   fqdns_application = [
