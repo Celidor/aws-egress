@@ -7,4 +7,13 @@ locals {
       Name = "${var.project}-${local.env}"
     },
   )
+
+  vpc_endpoints = [
+    "ec2",
+    "ec2messages",
+    "kms",
+    "s3",
+    "ssm",
+    "ssmmessages",
+  ]
 }

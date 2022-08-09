@@ -69,9 +69,9 @@ resource "aws_subnet" "subnet_priv_az2" {
   )
 }
 
-resource "aws_security_group" "vpce_ec2" {
-  name        = "vpce-ec2"
-  description = "ingress from entire vpc to ec2 endpoint for connectivity to it without public ips"
+resource "aws_security_group" "vpce" {
+  name        = "vpce"
+  description = "ingress from entire vpc to endpoints for connectivity to it without public ips"
 
   vpc_id = aws_vpc.vpc.id
 
@@ -81,18 +81,34 @@ resource "aws_security_group" "vpce_ec2" {
     protocol    = "tcp"
     cidr_blocks = [var.vpc_cidr]
 
-    description = "only https standard port needed for ec2 api"
+    description = "only https standard port needed for apis"
   }
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.project}-${local.env}-dmz-${var.az1}"
+    },
+  )
 }
 
 resource "aws_vpc_endpoint" "ec2" {
+  for_each          = toset(local.vpc_endpoints)
+
   vpc_id            = aws_vpc.vpc.id
-  service_name      = "com.amazonaws.${var.region}.ec2"
+  service_name      = "com.amazonaws.${var.region}.${each.key}"
   vpc_endpoint_type = "Interface"
 
   subnet_ids = [aws_subnet.subnet_priv_az1.id, aws_subnet.subnet_priv_az2.id]
 
-  security_group_ids = [aws_security_group.vpce_ec2.id]
+  security_group_ids = [aws_security_group.vpce.id]
 
-  private_dns_enabled = true
+  private_dns_enabled = each.key == "s3" ? false : true
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.project}-${local.env}-dmz-${var.az1}"
+    },
+  )
 }
