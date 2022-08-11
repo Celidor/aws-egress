@@ -3,6 +3,13 @@ resource "aws_flow_log" "vpc" {
   iam_role_arn    = aws_iam_role.flowlog-role.arn
   vpc_id          = aws_vpc.vpc.id
   traffic_type    = "ALL"
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.project}-${local.env}-dmz-${var.az1}"
+    },
+  )
 }
 
 resource "aws_cloudwatch_log_group" "vpc-flowlog-group" {

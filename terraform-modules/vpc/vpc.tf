@@ -93,7 +93,7 @@ resource "aws_security_group" "vpce" {
 }
 
 resource "aws_vpc_endpoint" "ec2" {
-  for_each          = toset(local.vpc_endpoints)
+  for_each = toset(local.vpc_endpoints)
 
   vpc_id            = aws_vpc.vpc.id
   service_name      = "com.amazonaws.${var.region}.${each.key}"
