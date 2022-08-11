@@ -9,14 +9,12 @@ locals {
   fqdns_repos = [
     "github.com"
   ]
+
   fqdns_aws = [
     "ec2-instance-connect.${var.region}.amazonaws.com",
-    "ec2messages.${var.region}.amazonaws.com",
-    "kms.${var.region}.amazonaws.com",
-    "ssm.${var.region}.amazonaws.com",
-    "ssmmessages.${var.region}.amazonaws.com",
-    "amazonlinux-2-repos-${var.region}.s3.${var.region}.amazonaws.com"
+    "amazonlinux-2-repos-${var.region}.s3.dualstack.${var.region}.amazonaws.com"
   ]
+
   fqdns_logging = [
     "${local.bucket_name}.s3.${var.region}.amazonaws.com",
     "${local.bucket_name}.s3.amazonaws.com",

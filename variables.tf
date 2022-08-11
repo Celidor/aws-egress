@@ -47,12 +47,12 @@ variable "subnet_priv_cidr_az2" {
 }
 
 variable "instance_type" {
-  default = "c6g.medium"
+  default = "t3.micro"
 }
 
 variable "image" {
-  description = "Amazon Linux 2 AMI eu-west-1 (ARM)"
-  default     = "ami-0a6b5206d1730bdce"
+  description = "Amazon Linux 2 AMI eu-west-1"
+  default     = "ami-089950bc622d39ed8"
 }
 
 variable "discriminat" {
