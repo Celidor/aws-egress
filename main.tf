@@ -20,7 +20,7 @@ module "ec2" {
   project            = var.project
   region             = var.region
   tags               = var.tags
-  image              = var.image
+  image              = data.aws_ami.amazon_linux.id
   instance_type      = var.instance_type
   vpc_id             = module.vpc.vpc_id
   subnet_dmz_az1_id  = module.vpc.subnet_dmz_az1_id
@@ -35,7 +35,7 @@ module "ec2" {
 module "discriminat" {
   count          = var.discriminat == true ? 1 : 0
   source         = "ChaserSystems/discriminat-eni/aws"
-  version        = "2.4.0"
+  version        = "2.4.1"
   public_subnets = [module.vpc.subnet_dmz_az1_id, module.vpc.subnet_dmz_az2_id]
 
   tags = merge(

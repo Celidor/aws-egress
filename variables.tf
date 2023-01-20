@@ -50,9 +50,9 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
-variable "image" {
-  description = "Amazon Linux 2 AMI eu-west-1"
-  default     = "ami-089950bc622d39ed8"
+variable "amazon_linux_major_version" {
+  description = "major version of Amazon Linux"
+  default     = "5.10-hvm-2.0"
 }
 
 variable "discriminat" {
