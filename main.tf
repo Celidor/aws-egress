@@ -35,7 +35,7 @@ module "ec2" {
 module "discriminat" {
   count          = var.discriminat == true ? 1 : 0
   source         = "ChaserSystems/discriminat-eni/aws"
-  version        = "2.4.1"
+  version        = "2.5.0"
   public_subnets = [module.vpc.subnet_dmz_az1_id, module.vpc.subnet_dmz_az2_id]
 
   tags = merge(
