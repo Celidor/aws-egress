@@ -60,7 +60,7 @@ variable "discriminat" {
 }
 
 variable "discriminat_version" {
-  default = "2.7.1"
+  default = "2.8.0"
 }
 
 variable "compute_az1_ip" {
